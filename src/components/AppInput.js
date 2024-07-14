@@ -1,57 +1,46 @@
-// import { StyleSheet, TextInput } from "react-native-web";
-
 import { useState } from "react";
 import { StyleSheet, TextInput } from "react-native";
+import { PhoneInput } from "./PhoneInput";
 
 export const AppInput = (props) => {
   console.log(props.type);
 
   const type = props.type;
+  const mask = props.mask;
+  const placeholder = props.placeholder;
 
-  if (props.mask) {
-    const [numero, setNumero] = useState("(84) 94002-8922");
+  if (mask) {
+    const [numero, setNumero] = useState("");
 
-    const onChangeHandler = (e) => {
-
-        // if (e.length == 1) setNumero('(' + e);  
-        // else if (e.length == 3) setNumero(e + ') '); 
-        // else if (e.length == 10) setNumero(e + '-');
-        // else setNumero(e); 
-        
-        if (e.length == 2) {
-            setNumero(`(${e}) `);
-        } else if (e.length == 10 && e.keyPress != 'delete') {
-            setNumero(`${e}-`);
-        } else setNumero(e); 
-
-        // setNumero(numero.map((num, index) => {
-        //     if (index == 0) {
-        //         return '(';
-        //     } else if (index == 3) {
-        //         return ')';
-        //     } else if (index == 4) {
-        //         return ' ';
-        //     } else if (index == 10) {
-        //         return '-';
-        //     }
-
-        //     return num + e;
-        // })); 
-    }
-
-    return <TextInput inputMode={type} style={styles.input} value={numero} onChangeText={onChangeHandler} />;
+    return (
+      <PhoneInput
+        style={styles.input}
+        onChangeState={setNumero}
+        value={numero}
+      />
+    );
   }
 
-  return <TextInput inputMode={type} style={styles.input} />;
+  return (
+    <TextInput
+      inputMode={type}
+      style={styles.input}
+      placeholder={placeholder}
+    />
+  );
 };
 
 AppInput.defaultProps = {
   mask: false,
   type: "text",
+  placeholder: "example",
 };
 
 const styles = StyleSheet.create({
   input: {
     backgroundColor: "white",
+    width: '200px',
+    borderStyle: 'solid',
+    borderRadius: '5px'
   },
 });
