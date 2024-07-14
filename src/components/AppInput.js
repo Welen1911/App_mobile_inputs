@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { StyleSheet, TextInput } from "react-native";
 import { PhoneInput } from "./PhoneInput";
+import Checkbox from "expo-checkbox";
 
 export const AppInput = (props) => {
   console.log(props.type);
@@ -9,7 +10,7 @@ export const AppInput = (props) => {
   const mask = props.mask;
   const placeholder = props.placeholder;
 
-  if (mask) {
+  if (mask && type == "tel") {
     const [numero, setNumero] = useState("");
 
     return (
@@ -19,6 +20,12 @@ export const AppInput = (props) => {
         value={numero}
       />
     );
+  }
+
+  if (type == "checkbox") {
+    const [checked, setChecked] = useState(false);
+
+    return <Checkbox value={checked} onValueChange={setChecked} />;
   }
 
   return (
@@ -39,8 +46,8 @@ AppInput.defaultProps = {
 const styles = StyleSheet.create({
   input: {
     backgroundColor: "white",
-    width: '200px',
-    borderStyle: 'solid',
-    borderRadius: '5px'
+    width: "200px",
+    borderStyle: "solid",
+    borderRadius: "5px",
   },
 });
