@@ -12,7 +12,7 @@ export default function App() {
       <AppInput type="email" />
 
       <Text>Tel with Mask</Text>
-      <AppInput type="tel" mask={true} />
+      <AppInput type="tel" mask="(00) 00000-0000" />
 
       <Text>Url</Text>
       <AppInput type="url" />

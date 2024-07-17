@@ -10,7 +10,7 @@ export const AppInput = (props) => {
   const mask = props.mask;
   const placeholder = props.placeholder;
 
-  if (mask && type == "tel") {
+  if (mask == "(00) 00000-0000" && type == "tel") {
     const [numero, setNumero] = useState("");
 
     return (
@@ -48,6 +48,5 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     width: "200px",
     borderStyle: "solid",
-    borderRadius: "5px",
   },
 });
