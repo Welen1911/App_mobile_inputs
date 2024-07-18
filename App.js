@@ -5,8 +5,8 @@ import { AppInput } from "./src/components/AppInput";
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Numeric</Text>
-      <AppInput type="numeric" />
+      <Text>Textarea</Text>
+      <AppInput type="textarea" multiline={true} />
 
       <Text>Email</Text>
       <AppInput type="email" />

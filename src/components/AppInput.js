@@ -7,8 +7,23 @@ export const AppInput = (props) => {
   console.log(props.type);
 
   const type = props.type;
+  const multiline = props.multiline;
+  const numberOfLines = props.numberOfLines;
+
   const mask = props.mask;
   const placeholder = props.placeholder;
+
+  if (type == "textarea") {
+    return (
+      <TextInput
+        inputMode={type}
+        style={styles.input}
+        placeholder={placeholder}
+        multiline={multiline}
+        numberOfLines={numberOfLines}
+      />
+    );
+  }
 
   if (mask == "(00) 00000-0000" && type == "tel") {
     const [numero, setNumero] = useState("");
@@ -41,6 +56,8 @@ AppInput.defaultProps = {
   mask: false,
   type: "text",
   placeholder: "example",
+  multiline: false,
+  numberOfLines: 5,
 };
 
 const styles = StyleSheet.create({
