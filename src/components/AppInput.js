@@ -2,6 +2,7 @@ import { useState } from "react";
 import { StyleSheet, TextInput } from "react-native";
 import { PhoneInput } from "./PhoneInput";
 import Checkbox from "expo-checkbox";
+import { View } from "react-native";
 
 export const AppInput = (props) => {
   console.log(props.type);
@@ -17,7 +18,7 @@ export const AppInput = (props) => {
     return (
       <TextInput
         inputMode={type}
-        style={styles.input}
+        style={[styles.input, styles.textarea]}
         placeholder={placeholder}
         multiline={multiline}
         numberOfLines={numberOfLines}
@@ -40,7 +41,11 @@ export const AppInput = (props) => {
   if (type == "checkbox") {
     const [checked, setChecked] = useState(false);
 
-    return <Checkbox value={checked} onValueChange={setChecked} />;
+    return (
+      <View style={styles.checkboxContainer}>
+        <Checkbox value={checked} onValueChange={setChecked} />
+      </View>
+    );
   }
 
   return (
@@ -63,7 +68,19 @@ AppInput.defaultProps = {
 const styles = StyleSheet.create({
   input: {
     backgroundColor: "white",
-    width: "200px",
-    borderStyle: "solid",
+    width: "80%",
+    padding: 10,
+    borderWidth: 1,
+    borderColor: "#ccc",
+    borderRadius: 4,
+    marginVertical: 5,
+  },
+  textarea: {
+    height: 100,
+  },
+  checkboxContainer: {
+    marginVertical: 5,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });

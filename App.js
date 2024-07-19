@@ -22,6 +22,8 @@ export default function App() {
         <AppInput type="checkbox" style={styles.checkbox} />
         <Text style={styles.text}>PHP</Text>
 
+        <View><Text>      </Text></View>
+
         <AppInput type="checkbox" style={styles.checkbox} />
         <Text style={styles.text}>Js</Text>
       </View>
@@ -45,6 +47,7 @@ const styles = StyleSheet.create({
     margin: "10px",
   },
   text: {
+    textAlign: "center",
     marginLeft: "1px",
     marginRight: "10px",
   },
